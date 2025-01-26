@@ -94,7 +94,7 @@ body {
   grid-column: 3;
 }
 
-.sidebar > .button {
+.sidebar>.button {
   float: right;
   margin-right: 1.2rem;
 }
@@ -122,6 +122,7 @@ form {
   margin-bottom: 1.6rem;
   padding: 1.2rem;
 }
+
 .form-split-bill {
   grid-template-columns: 1fr 12rem;
   padding: 3.2rem 4rem;
@@ -131,11 +132,11 @@ label {
   font-weight: 500;
 }
 
-label::first-letter {
+/* label::first-letter {
   display: inline-block;
   margin-right: 4px;
   font-size: 1.8rem;
-}
+} */
 
 input,
 select {
