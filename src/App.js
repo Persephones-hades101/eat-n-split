@@ -23,11 +23,21 @@ const initialFriends = [
 
 function App() {
   const [showAddFriend, setShowAddFriend] = useState(false)
+  const [friends, setFriends] = useState(initialFriends)
+
+  function handleAddFriends(newFriend) {
+    setFriends((friend) => [...friend, newFriend])
+    setShowAddFriend((show) => !show)
+  }
+
   return (
     <div className="app">
       <div className="sidebar">
-        <FriendList />
-        {showAddFriend ? <FormAddFriend /> : null}
+        <FriendList friends={friends} />
+        {showAddFriend
+          ? <FormAddFriend handleAddFriends={handleAddFriends} />
+          : null
+        }
         <Button onClick={() => setShowAddFriend(show => !show)}>{!showAddFriend ? "Add Friend" : "close"}</Button>
       </div>
       <FormSplitBill />
@@ -36,8 +46,8 @@ function App() {
 }
 
 
-function FriendList() {
-  const friends = initialFriends
+function FriendList({ friends }) {
+  // const friends = initialFriends
   return (
 
     <ul>
@@ -82,13 +92,30 @@ function Button({ children, onClick }) {
   return <button className="button" onClick={onClick}>{children}</button>
 }
 
-function FormAddFriend() {
-  return <form className="form-add-friend">
+function FormAddFriend({ handleAddFriends }) {
+
+  const [friendName, setFriendName] = useState("")
+  const [imgUrl, setImgUrl] = useState("https://i.pravatar.cc/48")
+
+
+
+  function handleSubmit(e) {
+    e.preventDefault()
+
+    if (!friendName || !imgUrl) return;
+
+    const id = crypto.randomUUID();
+    const newFriend = { id, name: friendName, image: `${imgUrl}?u=${id}`, balance: 0 }
+    handleAddFriends(newFriend)
+
+  }
+
+  return <form className="form-add-friend" onSubmit={handleSubmit}>
     <label>Friend Name</label>
-    <input type="text" />
+    <input type="text" value={friendName} onChange={(e) => setFriendName(e.target.value)} />
 
     <label>Image URL</label>
-    <input type="text" />
+    <input type="text" value={imgUrl} onChange={(e) => setImgUrl(e.target.value)} />
 
     <Button>Add</Button>
   </form>
