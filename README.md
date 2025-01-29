@@ -8,7 +8,6 @@
 ```bash
 npm install
 ```
-````
 
 4. Run the following command to start the development server
 
@@ -26,3 +25,4 @@ git add .
 git commit -m "Commit message"
 git push
 ```
+````
