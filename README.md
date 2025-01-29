@@ -1,13 +1,13 @@
-````
-
-```markdown
+````markdown
 # Steps to operate the React App
 
 1. Clone the repository to your local machine
 2. Open the terminal and navigate to the project directory
 3. Run the following command to install the dependencies
+
 ```bash
 npm install
+```
 ````
 
 4. Run the following command to start the development server
@@ -25,8 +25,4 @@ npm start
 git add .
 git commit -m "Commit message"
 git push
-```
-
-```
-
 ```
