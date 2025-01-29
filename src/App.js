@@ -177,9 +177,9 @@ function FormAddFriend({ onAddFriends }) {
 
 
 function FormSplitBill({ friend, onBillSplit }) {
-  const [bill, setBill] = useState(0)
-  const [yourBill, setYourBill] = useState(0)
-  const friendBill = bill - yourBill
+  const [bill, setBill] = useState("")
+  const [yourBill, setYourBill] = useState("")
+  const friendBill = bill ? bill - yourBill : ""
   const [whoIsPaying, setWhoIsPaying] = useState('user')
 
   function handleSubmit(e) {
